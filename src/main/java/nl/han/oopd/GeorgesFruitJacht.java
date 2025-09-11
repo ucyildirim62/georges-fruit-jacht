@@ -2,6 +2,7 @@ package nl.han.oopd;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
+import nl.han.oopd.scenes.GameLevel;
 import nl.han.oopd.scenes.TitleScene;
 
 import java.text.AttributedCharacterIterator;
@@ -26,6 +27,6 @@ public class GeorgesFruitJacht extends YaegerGame
     @Override
     public void setupScenes() {
         addScene(0, new TitleScene(this));
-
+        addScene(1, new GameLevel(this));
     }
 }
