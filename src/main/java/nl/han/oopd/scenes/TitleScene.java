@@ -12,26 +12,38 @@ import nl.han.oopd.entities.buttons.StartButton;
 
 public class TitleScene extends StaticScene {
 
-    private GeorgesFruitJacht georgesFruitJacht;
+    private static final String BACKGROUND_IMAGE = "backgrounds/titlescene.jpg";
+    private static final String TITLE_TEXT = "George's Fruit Jacht";
+    private static final String TITLE_FONT = "Roboto";
+    private static final int TITLE_FONT_SIZE = 80;
 
-    public TitleScene(GeorgesFruitJacht georgesFruitJacht) {this.georgesFruitJacht = georgesFruitJacht;}
+    private final GeorgesFruitJacht georgesFruitJacht;
+
+    public TitleScene(GeorgesFruitJacht georgesFruitJacht) {
+        this.georgesFruitJacht = georgesFruitJacht;
+    }
 
     @Override
     public void setupScene() {
-        setBackgroundImage("backgrounds/titlescene.jpg");
-
+        setBackgroundImage(BACKGROUND_IMAGE);
     }
 
     @Override
     public void setupEntities() {
-    var georgesFruitJachtText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Georges fruit jacht");
-    georgesFruitJachtText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
-    georgesFruitJachtText.setFill(Color.WHITE);
-    georgesFruitJachtText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-    addEntity(georgesFruitJachtText);
+        var titleText = new TextEntity(
+                new Coordinate2D(getWidth() / 2, getHeight() / 2),
+                TITLE_TEXT
+        );
+        titleText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
+        titleText.setFill(Color.WHITE);
+        titleText.setFont(Font.font(TITLE_FONT, FontWeight.SEMI_BOLD, TITLE_FONT_SIZE));
+        addEntity(titleText);
 
-    var playGameText = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() /2) , georgesFruitJacht);
-    playGameText.setAnchorPoint(AnchorPoint.TOP_CENTER);
-    addEntity(playGameText);
+        var startButton = new StartButton(
+                new Coordinate2D(getWidth() / 2, getHeight() / 2),
+                georgesFruitJacht
+        );
+        startButton.setAnchorPoint(AnchorPoint.TOP_CENTER);
+        addEntity(startButton);
     }
 }

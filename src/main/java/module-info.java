@@ -5,4 +5,5 @@ module georgesfruitjacht {
     exports nl.han.oopd;
 
     opens backgrounds;
+    opens sprites;
 }
