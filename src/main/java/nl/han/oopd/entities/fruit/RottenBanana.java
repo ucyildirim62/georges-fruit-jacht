@@ -14,7 +14,7 @@ public class RottenBanana extends Fruit {
 
     private void configureAppearance() {
         setFill(Color.BROWN);
-        setStrokeColor(Color.DARKRED);
+        setStrokeColor(Color.YELLOWGREEN);
     }
 
     @Override
