@@ -20,12 +20,17 @@ public class George extends DynamicSpriteEntity
 
     private static final int START_HEALTH = 3;
     private static final double FRICTION = 0.04;
-    private static final Size SPRITE_SIZE = new Size(20, 40);
+    private static final double EDGE_OFFSET = 1.0;
+    private static final double PLAYER_WIDTH = 20;
+    private static final double PLAYER_HEIGHT = 40;
+    private static final int SPRITE_ROWS = 1;
+    private static final int SPRITE_COLUMNS = 2;
+    private static final Size SPRITE_SIZE = new Size(PLAYER_WIDTH, PLAYER_HEIGHT);
 
-    private final GeorgesFruitJacht game;
+    private final GeorgesFruitJacht georgesFruitJacht;
     private final HealthText healthText;
     private final FruitCollectedText fruitCollectedText;
-    private final PlayerController controller;
+    private final PlayerController playerController;
 
     private int health;
     private int fruitCollected;
@@ -33,11 +38,12 @@ public class George extends DynamicSpriteEntity
     public George(final Coordinate2D location,
                   final HealthText healthText,
                   final FruitCollectedText fruitCollectedText,
-                  final GeorgesFruitJacht game) {
-        super("sprites/george.jpg", location, SPRITE_SIZE, 1, 2);
+                  final GeorgesFruitJacht georgesFruitJacht) {
+
+        super("sprites/george.jpg", location, SPRITE_SIZE, SPRITE_ROWS, SPRITE_COLUMNS);
         this.healthText = healthText;
         this.fruitCollectedText = fruitCollectedText;
-        this.game = game;
+        this.georgesFruitJacht = georgesFruitJacht;
 
         this.health = START_HEALTH;
         this.fruitCollected = 0;
@@ -45,7 +51,7 @@ public class George extends DynamicSpriteEntity
 
         setFrictionConstant(FRICTION);
 
-        this.controller = new PlayerController(this);
+        this.playerController = new PlayerController(this);
     }
 
     private void updateHUD() {
@@ -64,7 +70,7 @@ public class George extends DynamicSpriteEntity
         if (--health <= 0) {
             health = 0;
             updateHUD();
-            game.setActiveScene(GeorgesFruitJacht.GAME_OVER_SCENE);
+            georgesFruitJacht.setActiveScene(GeorgesFruitJacht.GAME_OVER_SCENE);
         } else {
             updateHUD();
         }
@@ -93,16 +99,16 @@ public class George extends DynamicSpriteEntity
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         setSpeed(0);
         switch (sceneBorder) {
-            case TOP -> setAnchorLocationY(1);
-            case BOTTOM -> setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-            case LEFT -> setAnchorLocationX(1);
-            case RIGHT -> setAnchorLocationX(getSceneWidth() - getWidth() - 1);
+            case TOP -> setAnchorLocationY(EDGE_OFFSET);
+            case BOTTOM -> setAnchorLocationY(getSceneHeight() - getHeight() - EDGE_OFFSET);
+            case LEFT -> setAnchorLocationX(EDGE_OFFSET);
+            case RIGHT -> setAnchorLocationX(getSceneWidth() - getWidth() - EDGE_OFFSET);
             default -> { }
         }
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-        controller.handleInput(pressedKeys);
+        playerController.handleInput(pressedKeys);
     }
 }

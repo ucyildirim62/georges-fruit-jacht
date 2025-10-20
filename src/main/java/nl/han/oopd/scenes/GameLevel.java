@@ -3,7 +3,6 @@ package nl.han.oopd.scenes;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.TileMapContainer;
 import nl.han.oopd.GeorgesFruitJacht;
 import nl.han.oopd.entities.player.George;
 import nl.han.oopd.entities.hud.HealthText;
@@ -30,14 +29,15 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
 
     @Override
     public void setupEntities() {
-        var healthText = new HealthText(new Coordinate2D(0, HUD_HEALTH_Y));
+        final var healthText = new HealthText(new Coordinate2D(0, HUD_HEALTH_Y));
         addEntity(healthText);
 
-        var fruitCollectedText = new FruitCollectedText(new Coordinate2D(0, HUD_FRUIT_Y));
+        final var fruitCollectedText = new FruitCollectedText(new Coordinate2D(0, HUD_FRUIT_Y));
         addEntity(fruitCollectedText);
 
+        final double startY = getHeight();
         addEntity(new George(
-                new Coordinate2D(PLAYER_START_X, getHeight()),
+                new Coordinate2D(PLAYER_START_X, startY),
                 healthText,
                 fruitCollectedText,
                 georgesFruitJacht

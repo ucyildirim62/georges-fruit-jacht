@@ -30,20 +30,21 @@ public class TitleScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var titleText = new TextEntity(
-                new Coordinate2D(getWidth() / 2, getHeight() / 2),
-                TITLE_TEXT
-        );
-        titleText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
-        titleText.setFill(Color.WHITE);
-        titleText.setFont(Font.font(TITLE_FONT, FontWeight.SEMI_BOLD, TITLE_FONT_SIZE));
-        addEntity(titleText);
+        final double centerX = getWidth() / 2;
+        final double centerY = getHeight() / 2;
 
-        var startButton = new StartButton(
-                new Coordinate2D(getWidth() / 2, getHeight() / 2),
-                georgesFruitJacht
-        );
+        addEntity(createCenteredTitle(centerX, centerY));
+
+        var startButton = new StartButton(new Coordinate2D(centerX, centerY), georgesFruitJacht);
         startButton.setAnchorPoint(AnchorPoint.TOP_CENTER);
         addEntity(startButton);
+    }
+
+    private TextEntity createCenteredTitle(double centerX, double centerY) {
+        var title = new TextEntity(new Coordinate2D(centerX, centerY), TitleScene.TITLE_TEXT);
+        title.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
+        title.setFill(Color.WHITE);
+        title.setFont(Font.font(TITLE_FONT, FontWeight.SEMI_BOLD, TITLE_FONT_SIZE));
+        return title;
     }
 }

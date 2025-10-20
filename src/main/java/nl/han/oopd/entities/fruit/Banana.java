@@ -2,7 +2,7 @@ package nl.han.oopd.entities.fruit;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.paint.Color;
-import nl.han.oopd.entities.player.George;
+import nl.han.oopd.entities.player.Player;
 
 public class Banana extends Fruit {
 
@@ -17,7 +17,7 @@ public class Banana extends Fruit {
     }
 
     @Override
-    public void applyEffect(George george) {
-        george.increaseFruitCollected();
+    public void applyEffect(Player player) {
+        player.increaseFruitCollected();
     }
 }
