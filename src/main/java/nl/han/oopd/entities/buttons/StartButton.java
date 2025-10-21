@@ -5,15 +5,15 @@ import nl.han.oopd.GeorgesFruitJacht;
 
 public class StartButton extends BaseButton {
 
-    private final GeorgesFruitJacht game;
+    private final GeorgesFruitJacht georgesFruitJacht;
 
-    public StartButton(Coordinate2D location, GeorgesFruitJacht game) {
+    public StartButton(Coordinate2D location, GeorgesFruitJacht georgesFruitJacht) {
         super(location, "Play game");
-        this.game = game;
+        this.georgesFruitJacht = georgesFruitJacht;
     }
 
     @Override
     protected void onClick() {
-        game.setActiveScene(1); // Naar GameLevel
+        georgesFruitJacht.setActiveScene(1);
     }
 }

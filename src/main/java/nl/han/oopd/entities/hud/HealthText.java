@@ -7,8 +7,8 @@ public class HealthText extends BaseHudText {
     private static final Color COLOR = Color.WHITE;
     private static final String LABEL = "Health: ";
 
-    public HealthText(Coordinate2D loc) {
-        super(loc, LABEL, COLOR);
+    public HealthText(Coordinate2D location) {
+        super(location, LABEL, COLOR);
     }
     public void updateHealth(int health) { setValue(health); }
 }

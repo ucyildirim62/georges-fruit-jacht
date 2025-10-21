@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
-import nl.han.oopd.entities.player.George;
+import nl.han.oopd.entities.player.Player;
 
 import java.util.List;
 
@@ -28,8 +28,8 @@ public abstract class Fruit extends DynamicCircleEntity implements FruitEffect, 
     @Override
     public void onCollision(List<Collider> collidingObjects) {
         for (Collider collider : collidingObjects) {
-            if (collider instanceof George george) {
-                applyEffect(george);
+            if (collider instanceof Player player) {
+                applyEffect(player);
                 remove();
                 break;
             }
