@@ -5,15 +5,15 @@ import nl.han.oopd.GeorgesFruitJacht;
 
 public class QuitButton extends BaseButton {
 
-    private final GeorgesFruitJacht game;
+    private final GeorgesFruitJacht georgesFruitJacht;
 
-    public QuitButton(Coordinate2D location, GeorgesFruitJacht game) {
+    public QuitButton(Coordinate2D location, GeorgesFruitJacht georgesFruitJacht) {
         super(location, "Quit game");
-        this.game = game;
+        this.georgesFruitJacht = georgesFruitJacht;
     }
 
     @Override
     protected void onClick() {
-        game.quit();
+        georgesFruitJacht.quit();
     }
 }

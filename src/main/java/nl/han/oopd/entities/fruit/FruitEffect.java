@@ -1,6 +1,5 @@
 package nl.han.oopd.entities.fruit;
 
-import nl.han.oopd.entities.player.George;
 import nl.han.oopd.entities.player.Player;
 
 /**
